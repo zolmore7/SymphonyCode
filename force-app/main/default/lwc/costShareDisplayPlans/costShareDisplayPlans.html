@@ -1,0 +1,32 @@
+<template>
+    <template if:true={result}>
+        <!--<div class="soldResult">{result}</div> -->
+    </template>
+    <div class="slds-grid slds-gutters slds-wrap">
+    <template for:each={quoteData.QuoteLineItems} for:item="lineItem" for:index="index">
+        <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={index} onclick={selectPlan}>
+            <div class="plan">{lineItem.Product2.Name}</div>
+            <template if:true={lineItem.Sym_IS_Vision__c}>
+                Vision
+                {lineItem.Product2.Sym_MonthlyPremium__c}             
+                <img src={customGlasses}/>
+            </template>
+            <template if:true={lineItem.Sym_IS_Dental__c}>
+                Dental
+                <img src={customImageTooth}/>
+                {lineItem.Product2.Sym_MonthlyPremium__c}             
+                <div class="slds-align_absolute-center slds-m-top_large">
+                        <lightning-button label="Modify Plan" variant="brand" data-item={index} onclick={navigateToComponent}></lightning-button>
+                </div><br/>        
+            </template>
+            <template if:true={lineItem.Sym_IS_SuppHealth__c}>
+                Supp Health
+                {lineItem.Product2.Sym_MonthlyPremium__c}
+                {lineItem.Sym_Diagnostic_Exam__c}             
+                {lineItem.Sym_Hospital_Admission__c}
+                {lineItem.Sym_Emergency_Room__c}
+            </template>
+        </div>    
+    </template>
+  </div>
+</template>

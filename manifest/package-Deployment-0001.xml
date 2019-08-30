@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>symphonyPortalDataIn</members>
+        <members>SymphonyRatesQueueable</members>
+        <members>SymphonyRecommendationsQueueable</members>
+        <members>symphonyGetQuotes</members>
+        <members>APISymphonyRecPlans</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>SymphonyContentDocumentLink</members>
+        <members>SymphonyRatingReturn</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Symphony_Quote_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>    
+</Package>

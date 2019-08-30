@@ -1,0 +1,243 @@
+<aura:component implements="lightning:isUrlAddressable" controller="alternateEndingModifyPlan" access="global" >
+    <aura:attribute name="currentContractCode" type="String" description="Contract code from Quoteline from LWC"/>
+    <aura:attribute name="currentQuoteLineId" type="String" description="QuotelineId from LWC"/>
+    <aura:attribute name="ProductLOB" type="String" description="ProductLOB from LWC"/>
+    <aura:attribute name="currentPrice" type="Double" description="Price from LWC"/>
+    <aura:attribute name="Details" type="object[]" description="Details from WebService"/>
+    <aura:attribute name="QuoteLine" type="object" description="Details from QuoteLine"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}" />
+    <aura:if isTrue="{!v.Details != null}">
+        <div class="c-container">
+            <div class="fixed">
+                <aura:if isTrue="{!v.QuoteLine.ProductLOB == 'Medical'}">
+                    <lightning:card class="slds-text-title" variant="base" iconName="">
+                        <aura:set attribute="title" >
+                            <div class="slds-text-title_bold slds-text-title_caps slds-truncate">
+                                <h2>Medical Plan Cost Shares</h2>
+                            </div>
+                        </aura:set>
+                        <aura:set attribute="body" >
+                            <!-- -->
+                            <ui:scrollerWrapper class="sWrapTest">
+                                
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-text-align_center">
+                                    <thead>
+                                        <tr class="slds-text-heading--label">
+                                            <th scope="col" class="slds-text-align_center"><div class="slds-truncate" title="Type">Type</div></th>
+                                            <th scope="col" colspan="2" class="slds-text-align_center"><div class="slds-truncate" title="Preferred_Network_1">Preferred Network 1</div></th>
+                                            <th scope="col" colspan="2" class="slds-text-align_center"><div class="slds-truncate" title="Out_Of_Network">Out Of Network</div></th>
+                                        </tr>
+                                        <tr class="slds-text-heading--label">
+                                            <td width="20%"></td>
+                                            <td width="20%" class="slds-text-align_center">Individual</td>
+                                            <td width="20%" class="slds-text-align_center">Family</td>
+                                            <td width="20%" class="slds-text-align_center">Individual</td>
+                                            <td width="20%" class="slds-text-align_center">Family</td>
+                                        </tr>
+                                    </thead>
+                                    <!-- tbody starts here -->
+                                    <tbody>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Deductible</td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Individual Deductible'}">
+                                                        <lightning:input aura:id="INID" type="number" formatter="currency" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Family Deductible'}">
+                                                        <lightning:input aura:id="INFD" type="number" formatter="currency" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <lightning:input type="number" formatter="currency" label="" min="0" max="50000" value="3000" disabled="true"/>
+                                                Must be between 0 and 50000<br/>
+                                                Increments of 10
+                                            </td>
+                                            <td class="slds-text-align_center"><lightning:input type="number" formatter="currency" label="" min="0" max="50000" value="3000" disabled="true"/>
+                                                Must be between 0 and 50000<br/>
+                                                Increments of 10
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Out of Pocket Max</td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Out of Pocket Maximum Individual'}">
+                                                        <lightning:input aura:id="INOOPMI" type="number" formatter="currency" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Out of Pocket Maximum Family'}">
+                                                        <lightning:input aura:id="INOOPMF" type="number" formatter="currency" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <lightning:input type="number" formatter="currency" label="" min="0" max="50000" value="10500" disabled="true"/>
+                                                Must be between 0 and 50000<br/>
+                                                Increments of 10
+                                            </td>
+                                            <td class="slds-text-align_center"><lightning:input type="number" formatter="currency" label="" min="0" max="50000" value="21000" disabled="true"/>
+                                                Must be between 0 and 50000<br/>
+                                                Increments of 10
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Default Coinsurance</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Coinsurance'}">
+                                                        <lightning:input aura:id="INC" type="number" formatter="percentage" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                            </td>
+                                            <td class="slds-text-align_center"><lightning:input type="number" formatter="percentage" label="" min="0" max="50" value="50" disabled="true"/>
+                                                Must be between 0 and 50<br/>
+                                                Increments of 10
+                                            </td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Rate</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.currentPrice}" disabled="true"/>
+                                            </td>
+                                            <td colspan="3">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ui:scrollerWrapper>
+                        </aura:set>
+                        <aura:set attribute="actions">
+                            <lightning:button variant="brand" onclick="{!c.getPrice}"  label="Get Modified Rate" title="" />
+                            <lightning:button variant="brand" onclick="{!c.saveQuoteLine}"  label="Save Cost Share Changes" title="" />
+                            <lightning:button variant="brand" onclick="{!c.goBackToQuote}"  label="Back" title="" />
+                            <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large" class="slds-hide"/>
+                        </aura:set>
+                    </lightning:card>
+                </aura:if>
+                <aura:if isTrue="{!v.QuoteLine.ProductLOB == 'Dental'}">
+                    <lightning:card class="slds-text-title" variant="base" iconName="">
+                        <aura:set attribute="title" >
+                            <div class="slds-text-title_bold slds-text-title_caps slds-truncate">
+                                <h2>Dental Plan Cost Shares</h2>
+                            </div>
+                        </aura:set>
+                        <aura:set attribute="body" >
+                            <!-- -->
+                            <ui:scrollerWrapper class="sWrapTest">
+                                
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-text-align_center">
+                                    <thead>
+                                        <tr class="slds-text-heading--label">
+                                            <th scope="col" class="slds-text-align_center"><div class="slds-truncate" title="Type">Type</div></th>
+                                            <th scope="col" colspan="1" class="slds-text-align_center"><div class="slds-truncate" title="Preferred_Network_1">Preferred Network 1</div></th>
+                                            <th scope="col" colspan="1" class="slds-text-align_center"><div class="slds-truncate" title="Out_Of_Network">Out Of Network</div></th>
+                                        </tr>
+                                    </thead>
+                                    <!-- tbody starts here -->
+                                    <tbody>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Diagnostic / Preventive Services</td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Diagnostic / Preventive Services Coinsurance'}">
+                                                        <lightning:input aura:id="INDPSC" type="number" formatter="percentage" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <lightning:input type="number" formatter="percentage" label="" min="70" max="100" value="80" disabled="true"/>
+                                                Must be between 70 and 100<br/>
+                                                Increments of 10
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Annual Maximum</td>
+                                            <td class="slds-text-align_center">
+                                                <aura:iteration items="{!v.Details}" var="d" indexVar="ind">
+                                                    <aura:if isTrue="{!d.Name == 'In Network Benefit Plan Maximum Dental Dollar Limit'}">
+                                                        <lightning:input aura:id="INBPMDDL" type="number" formatter="currency" label="" step="{!d.Step}" min="{!d.Min}" max="{!d.Max}" value="{!d.DefaultValue}"/>
+                                                        Must be between {!d.Min} and {!d.Max}<br/>
+                                                        Increments of {!d.Step}
+                                                        <br/>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </td>
+                                            <td class="slds-text-align_center">
+                                                <lightning:input type="number" formatter="currency" label="" min="0" max="50000" value="10500" disabled="true"/>
+                                                Must be between 0 and 50000<br/>
+                                                Increments of 10
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Orthodontic Coverage</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:select required="true" value="{!v.QuoteLine.OrthodonticCoverage}" messageWhenValueMissing="Did you forget to select OrthodonticCoverage?">
+                                                    <option value="Not Covered">Not Covered</option>
+        											<option value="Child Only">Child Only</option>
+        											<option value="Adult &amp; Child">Adult &amp; Child</option>
+    											</lightning:select>
+                                            </td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:select required="true" value="{!v.QuoteLine.OrthodonticCoverage}" disabled="true">
+                                                    <option value="Not Covered">Not Covered</option>
+        											<option value="Child Only">Child Only</option>
+        											<option value="Adult &amp; Child">Adult &amp; Child</option>
+    											</lightning:select>
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Rate</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.currentPrice}" disabled="true"/>
+                                            </td>
+                                            <td colspan="1">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ui:scrollerWrapper>
+                        </aura:set>
+                        <aura:set attribute="actions">
+                            <lightning:button variant="brand" onclick="{!c.getPrice}"  label="Get Modified Rate" title="" />
+                            <lightning:button variant="brand" onclick="{!c.saveQuoteLine}"  label="Save Cost Share Changes" title="" />
+                            <lightning:button variant="brand" onclick="{!c.goBackToQuote}"  label="Back" title="" />
+                            <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large" class="slds-hide"/>
+                        </aura:set>
+                    </lightning:card>
+                </aura:if>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

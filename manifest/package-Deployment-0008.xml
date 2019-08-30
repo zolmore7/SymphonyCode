@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>APISymphonyPlan</members>
+        <members>SymphonyCallBrokerPortal</members>
+        <members>symphonyPortalDataIn</members>
+        <members>symphonyGetQuoteAndLineItems</members>
+        <members>SymphonyRecommendationsQueueable</members>
+        <members>symphonyTempCallRate</members>
+        <members>SymphonyAddSpecialityPlans</members>
+        <members>APISymphonyRecPlans</members>
+        <members>SymphonyCostShareGetQuoteLineItems</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Symphony_Add_Specialty_Plans</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>costShareDisplayPlans</members>
+        <name>LightningComponentBundle</name>
+    </types> 
+        <types>
+        <members>Symphony_Quote_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+</Package>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SYM_FJA_API_ModifyPlan_Json2Apex</members>
+        <members>AnthemAPI</members>
+        <members>SymphonyCallBrokerPortal</members>
+        <members>SymphonyTimeStatus</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>costShareDisplayPlans</members>
+        <members>symphonyDisplayPlans</members>
+        <members>symphonyMovePath</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <name>AuraDefinitionBundle</name>
+    </types>
+</Package>

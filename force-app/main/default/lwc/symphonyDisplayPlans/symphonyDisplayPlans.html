@@ -1,0 +1,41 @@
+<template>
+        <template if:true={result}>
+            <!--<div class="soldResult">{result}</div> -->
+        </template>
+        <div class="slds-grid slds-gutters slds-wrap">
+        <template for:each={quoteData.QuoteLineItems} for:item="lineItem" for:index="index">
+            <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={index} onclick={selectPlan}>
+                <div class="plan">{lineItem.Product2.Name}</div>
+                <template if:true={lineItem.Sym_IsSold__c}>
+                    <div class="rating">Average Monthly Premium &#9989;</div>
+                </template>
+                <template if:false={lineItem.Sym_IsSold__c}>
+                    <div class="rating">Average Monthly Premium</div>
+                    </template>                
+                <div class="total">{lineItem.UnitPrice}</div>
+                <div class="right">{lineItem.Product2.Sym_Deductible__c}</div>
+                <div class="left">Deductible</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Primary_Care_Copay__c}</div>
+                <div class="left">Primary Care Copay</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Specialist_Copay__c}</div>
+                <div class="left">Specialist Copay</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Maximum_Out_of_Pocket__c}</div>
+                <div class="left">Maximum Out-of-Pocket</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Coinsurance__c}</div>
+                <div class="left">Coinsurance</div><br/>
+                <div class="header">Pharmacy Included</div>
+                <div class="right">{lineItem.Product2.Sym_Rx_Network__c}</div>
+                <div class="left">Rx Network</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Coinsurance_Pharmacy__c}</div>
+                <div class="left">Coinsurance</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Rx_Plan__c}</div>
+                <div class="left">Rx Plan</div><br/>
+                <div class="right">{lineItem.Product2.Sym_Preventative_Drugs_Covered__c}</div>
+                <div class="left">Preventative Drugs Covered</div><br/>
+                <div class="slds-align_absolute-center slds-m-top_large">
+                    <lightning-button label="Modify Plan" variant="brand" data-item={index} onclick={navigateToComponent}></lightning-button>
+                </div><br/>
+            </div>    
+        </template>
+      </div>
+</template>
