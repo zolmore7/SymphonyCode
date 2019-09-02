@@ -12,7 +12,7 @@ export default class SymphonyMovePath extends LightningElement {
     @track data;
     @track error;
     @track status;
-    @track currentStatus;
+    currentStatus;
     picklistValues = ['Customer setup is initiated','Customer setup is Completed','Member Enrollment Complete','Billing is activated and ID cards are available'];
 
     movePath() {
@@ -20,23 +20,22 @@ export default class SymphonyMovePath extends LightningElement {
         .then(result => {
             this.data = result;
             this.currentStatus = this.data.Sym_Case_Status__c;
-            console.log(this.data.Sym_Case_Status__c);
-        })
-
-        updateRecord({ theId : this.recId})
-        .then(result => {
-            this.data = result;
-            console.log(this.data);
-            if(this.currentStatus !== 'Customer setup is Completed') {
-                window.location.reload();
-                callBrokerPortal({ theId : this.recId});
+            console.log(this.currentStatus);
+            if(this.currentStatus === 'Customer setup is initiated') {
+                console.log('aaaaa');
+                updateRecord({ theId : this.recId})
+                .then(result2 => {
+                    this.data = result2;
+                    console.log(this.data);
+                        window.location.reload();
+                        callBrokerPortal({ theId : this.recId});     
+                })
+                .catch(error => {
+                    this.error = error;
+                    console.log(JSON.stringify(error));
+                });
             }
-
         })
-        .catch(error => {
-            this.error = error;
-            console.log(JSON.stringify(error));
-        });
     }
 
     connectedCallback() {

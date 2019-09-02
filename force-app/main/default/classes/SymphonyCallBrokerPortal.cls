@@ -2,7 +2,7 @@ public with sharing class SymphonyCallBrokerPortal {
     public SymphonyCallBrokerPortal() {
 
     }
-    @InvocableMethod(label='Call Broker Portal')
+    @future(callout=true)
     public static void sendMessageToPortal(List<String> payload) {
         system.debug('Passed=' + payload[0]);
 

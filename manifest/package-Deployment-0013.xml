@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SymphonyMessages</members>        
+        <name>ApexTrigger</name>
+    </types>
+	<types>
+        <members>SymphonyTriggerHandler</members>
+        <members>SymphonyCallBrokerPortal</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>symphonyMovePath</members>
+        <name>LightningComponentBundle</name>
+    </types>
+</Package>
