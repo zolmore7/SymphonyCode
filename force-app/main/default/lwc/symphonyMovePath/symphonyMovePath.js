@@ -21,8 +21,7 @@ export default class SymphonyMovePath extends LightningElement {
             this.data = result;
             this.currentStatus = this.data.Sym_Case_Status__c;
             console.log(this.currentStatus);
-            if(this.currentStatus === 'Customer setup is initiated') {
-                console.log('aaaaa');
+            if(this.currentStatus !== 'Billing is activated and ID cards are available') {
                 updateRecord({ theId : this.recId})
                 .then(result2 => {
                     this.data = result2;
@@ -42,7 +41,7 @@ export default class SymphonyMovePath extends LightningElement {
         this.recId = this.recordId;
         setTimeout(() => {
             this.movePath();
-        }, 10000);
+        }, 30000);
     }
 
 }
