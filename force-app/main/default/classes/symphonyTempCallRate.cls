@@ -64,14 +64,21 @@ public with sharing class symphonyTempCallRate {
             ratingRequest.ratingRequestPlans.add(rrp);
         }
 
-        List<Sym_Census_Member__c> cmr = [SELECT ID, Sym_First_Name__c, Sym_Last_Name__c, Sym_Birthday_Text__c, Sym_Zip_Code__c, Sym_Gender__c, Sym_Tier__c, Sym_Eligibility__c FROM Sym_Census_Member__c WHERE Sym_Census__c = 'a9O19000000Fk2aEAC'];
+        List<Sym_Census_Member__c> cmr = [SELECT ID, Sym_First_Name__c, Sym_Last_Name__c, Sym_Birthday_Text__c, Sym_Zip_Code__c, Sym_Gender__c, Sym_Tier__c, Sym_Eligibility__c FROM Sym_Census_Member__c WHERE Sym_Census__c = 'aA72f0000004FgOCAU'];
         ratingRequest.census = new List<AnthemAPI.RatingCensus>();
         for(Sym_Census_Member__c cm : cmr) {
             AnthemAPI.RatingCensus rrc = new AnthemAPI.RatingCensus();
             rrc.firstName = cm.Sym_First_Name__c;
             rrc.lastName = cm.Sym_Last_Name__c;
             
-            rrc.dateOfBirth = cm.Sym_Birthday_Text__c;
+            //rrc.dateOfBirth = cm.Sym_Birthday_Text__c;
+            //Patch to fix birthday format wrong
+            String formattedBirthday = '';
+            List<String> thePieces = cm.Sym_Birthday_Text__c.split('/');
+            formattedBirthday = '19' + thePieces[2] + '-' + thePieces[0] + '-' + thePieces[1];
+            rrc.dateOfBirth = formattedBirthday;
+
+
             rrc.zip = Integer.valueOf(cm.Sym_Zip_Code__c);
             rrc.sex = cm.Sym_Gender__c;
             rrc.tier = cm.Sym_Tier__c;

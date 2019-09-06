@@ -30,7 +30,7 @@ export default class CostShareDisplayPlans extends NavigationMixin(LightningElem
     })
 
     formatAmounts() {
-        this.template.querySelectorAll('div.total').forEach(element => {
+        this.template.querySelectorAll('div.numbers').forEach(element => {
             let mystring = element.innerHTML.replace('$', '').replace(',','');
             console.log(mystring);
             element.innerHTML = this.formatter.format(mystring);

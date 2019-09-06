@@ -283,8 +283,9 @@ public with sharing class SymphonyCaseUtil {
     @future(callout=true)
     public static void sendCustomerMaster(Id quoteId) {
         String payload = [SELECT Body FROM StaticResource WHERE Name = 'Customer_Master_Payload'].Body.toString();
-        payload = payload.replace('"0011900000ktHtKAAU"', '"' + quoteId + '"');
-        payload = payload.replace('"1212"', '"' + quoteId + '"');
+        payload = payload.replace('"SF10000112"', '"' + quoteId + '"');
+        payload = payload.replace('"12121111"', '"' + quoteId + '"');
+        payload = payload.replace('"af31049"', '"AG33320"');
         AnthemAPI.sendCustomerMaster(payload);
     }
 

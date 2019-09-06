@@ -9,9 +9,12 @@
         <members>alternateEndingModifyPlan</members>
         <members>SymphonyAddSpecialityPlans</members>
         <members>SymphonyCostShareGetQuoteLineItems</members>
+        <members>SymphonyTriggerHandler</members>
+        <members>symphonyTempCallRate</members>
         <name>ApexClass</name>
     </types>
     <types>
+        <members>symphonyMovePath</members>
         <members>costShareDisplayPlans</members>
         <name>LightningComponentBundle</name>
     </types>
