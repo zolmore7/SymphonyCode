@@ -6,11 +6,12 @@ import getQuotes from '@salesforce/apex/SymphonyCostShareGetQuoteLineItems.getLi
 import { NavigationMixin } from 'lightning/navigation';
 import symphonyTooth from '@salesforce/resourceUrl/SymphonyTooth';
 import symphonyGlasses from '@salesforce/resourceUrl/SymphonyGlasses';
+import symphonyHeart from '@salesforce/resourceUrl/SymphonyHeart';
 
 export default class CostShareDisplayPlans extends NavigationMixin(LightningElement){
     @api recordId;
     @track recId;
-    @track result;
+    @track result; 
     @track quoteData = {};
     theError;
     tempValue;
@@ -22,6 +23,7 @@ export default class CostShareDisplayPlans extends NavigationMixin(LightningElem
 
     customImageTooth = symphonyTooth;
     customGlasses = symphonyGlasses;
+    customHeart = symphonyHeart;
 
     formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',

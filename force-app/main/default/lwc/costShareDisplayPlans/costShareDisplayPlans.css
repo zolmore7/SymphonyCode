@@ -5,8 +5,30 @@
     min-height: 75px;
 }
 
+.clearIt {
+    clear: both;
+}
+
+.absolute {
+    position: absolute;
+    margin-left: 5%;
+}
+
+.smaller {
+    width: 100%;
+}
+
+img {
+    opacity: 0.25;
+}
+
 .dentalHeader {
     font-weight: bold;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.uLine {
     text-decoration: underline;
 }
 

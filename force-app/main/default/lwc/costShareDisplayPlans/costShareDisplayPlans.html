@@ -7,73 +7,76 @@
         <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={index} onclick={selectPlan}>
             <div class="plan">{lineItem.Product2.Description}</div>
             <template if:true={lineItem.Sym_IS_Vision__c}>
-                <div class="right bold">Rate</div>
-                <div class="left dentalHeader">Monthly Coverage Options</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Single_Number__c}</div>
+                <div class="absolute"><img src={customGlasses} /></div>
+                <div class="right bold clearIt dentalHeader">Rate</div>
+                <div class="left dentalHeader uLine">Monthly Coverage Options</div><br/>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Single_Number__c}</div>
                 <div class="left">Employee Only</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Two_Party__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Two_Party__c}</div>
                 <div class="left">Employee + Spouse</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_eeChildren__c}</div>
-                <div class="left">Employee + Dependent Child(ren)</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Family__c}</div>
-                <div class="left">Employee + Family</div><br/>
-                <div class="right"></div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_eeChildren__c}</div>
+                <div class="left">Employee + Dependent Child(ren)</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Family__c}</div>
+                <div class="left">Employee + Family</div>
+                <div class="right clearIt">&nbsp;</div>
                 <div class="left dentalHeader">Benefits</div><br/>
-                <div class="right">{lineItem.Sym_Exam_Frequency__c}</div>
+                <div class="right clearIt">{lineItem.Sym_Exam_Frequency__c}</div>
                 <div class="left">Exam Frequency</div><br/>
-                <div class="right numbers">${lineItem.Sym_Lens_Copay__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Lens_Copay__c}</div>
                 <div class="left">Lens Copay</div><br/>
-                <div class="right numbers">${lineItem.Sym_Frame_Benefit__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Frame_Benefit__c}</div>
                 <div class="left">Frame Benefit</div><br/>
-                <div class="right numbers">${lineItem.Sym_Contact_Lens_Benefit__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Contact_Lens_Benefit__c}</div>
                 <div class="left">Contact Lens Benefit</div><br/>
-                <div class="right"></div>
+                <div class="right clearIt"></div>
             </template>
             <template if:true={lineItem.Sym_IS_Dental__c}>
-                <div class="right bold">Rate</div>
-                <div class="left dentalHeader">Monthly Coverage Options</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Single_Number__c}</div>
+                <div class="absolute"><img src={customImageTooth} /></div>
+                <div class="right bold dentalHeader cleartIt">Rate</div>
+                <div class="left dentalHeader uLine">Monthly Coverage Options</div><br/>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Single_Number__c}</div>
                 <div class="left">Employee Only</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Two_Party__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Two_Party__c}</div>
                 <div class="left">Employee + Spouse</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_eeChildren__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_eeChildren__c}</div>
                 <div class="left">Employee + Dependent Child(ren)</div><br/>
-                <div class="right numbers">${lineItem.Sym_Rate_Family__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_Rate_Family__c}</div>
                 <div class="left">Employee + Family</div><br/>
-                <div class="right"></div>
+                <div class="right clearIt"></div>
                 <div class="left dentalHeader">Coverage</div><br/>
-                <div class="right">{lineItem.Sym_In_Network_Coinsurance__c}%</div>
+                <div class="right clearIt">{lineItem.Sym_In_Network_Coinsurance__c}%</div>
                 <div class="left">Diagnostic and Preventive</div><br/>
-                <div class="right">{lineItem.Sym_Orthodontic_Coverage__c}</div>
+                <div class="right clearIt">{lineItem.Sym_Orthodontic_Coverage__c}</div>
                 <div class="left">Orthodontic Coverage</div><br/>
-                <div class="right"></div>
+                <div class="right clearIt"></div>
                 <div class="left dentalHeader">Annual Maximums</div><br/>
-                <div class="right numbers">${lineItem.Sym_In_Network_Benefit_Plan_Max_Limit__c}</div>
+                <div class="right numbers clearIt">${lineItem.Sym_In_Network_Benefit_Plan_Max_Limit__c}</div>
                 <div class="left">INN Annual Maximum</div><br/>
-                <div class="slds-align_absolute-center slds-m-top_large">
+                <div class="slds-align_absolute-center slds-m-top_xxx-large clearIt">
                 <lightning-button label="Modify Plan" variant="brand" data-item={index} onclick={navigateToComponent}></lightning-button>
                 </div><br/>        
             </template>
             <template if:true={lineItem.Sym_IS_SuppHealth__c}>
-                <div class="right bold">Rate</div>
-                <div class="left dentalHeader">Monthly Coverage Options</div><br/>
-                <div class="right">${lineItem.Sym_Rate_Single_Number__c}.00</div>
+                <div class="absolute"><img src={customHeart} /></div>
+                <div class="right bold dentalHeader clearIt">Rate</div>
+                <div class="left dentalHeader uLine">Monthly Coverage Options</div><br/>
+                <div class="right clearIt">${lineItem.Sym_Rate_Single_Number__c}.00</div>
                 <div class="left">Employee Only</div><br/>
-                <div class="right">${lineItem.Sym_Rate_Two_Party__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Rate_Two_Party__c}.00</div>
                 <div class="left">Employee + Spouse</div><br/>
-                <div class="right">${lineItem.Sym_Rate_eeChildren__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Rate_eeChildren__c}.00</div>
                 <div class="left">Employee + Dependent Child(ren)</div><br/>
-                <div class="right">${lineItem.Sym_Rate_Family__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Rate_Family__c}.00</div>
                 <div class="left">Employee + Family</div><br/>
-                <div class="right"></div>
+                <div class="right clearIt"></div>
                 <div class="left dentalHeader">Benefits</div><br/>
-                <div class="right">${lineItem.Sym_Hospital_Admission__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Hospital_Admission__c}.00</div>
                 <div class="left">Hospital Admission</div><br/>
-                <div class="right">${lineItem.Sym_Emergency_Room__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Emergency_Room__c}.00</div>
                 <div class="left">Emergency Room</div><br/>
-                <div class="right">${lineItem.Sym_Diagnostic_Exam__c}.00</div>
+                <div class="right clearIt">${lineItem.Sym_Diagnostic_Exam__c}.00</div>
                 <div class="left">Diagnostic Exam</div><br/>
-                <div class="right"></div>
+                <div class="right clearIt"></div> 
             </template>
         </div>    
     </template>
