@@ -5,6 +5,10 @@
     <aura:attribute name="currentPrice" type="Double" description="Price from LWC"/>
     <aura:attribute name="Details" type="object[]" description="Details from WebService"/>
     <aura:attribute name="QuoteLine" type="object" description="Details from QuoteLine"/>
+    <aura:attribute name="Single" type="Double" default="0.00" description="Price from Pricing service"/>
+    <aura:attribute name="Children" type="Double" default="0.00" description="Price from Pricing service"/>
+    <aura:attribute name="Family" type="Double" default="0.00" description="Price from Pricing service"/>
+    <aura:attribute name="TwoParty" type="Double" default="0.00" description="Price from Pricing service"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}" />
     <aura:if isTrue="{!v.Details != null}">
@@ -218,9 +222,33 @@
                                             </td>
                                         </tr>
                                         <tr style="width:100%">
-                                            <td class="slds-text-align_center">Rate</td>
+                                            <td class="slds-text-align_center">Employee Only</td>
                                             <td class="slds-text-align_center" colspan="1">
-                                                <lightning:input type="number" formatter="currency" label="" value="{!v.currentPrice}" disabled="true"/>
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.QuoteLine.RateSingleNumber}" disabled="true"/>
+                                            </td>
+                                            <td colspan="1">
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Employee + Spouse</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.QuoteLine.RateTwoParty}" disabled="true"/>
+                                            </td>
+                                            <td colspan="1">
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Employee + Dependent Child(ren)</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.QuoteLine.RateChildren}" disabled="true"/>
+                                            </td>
+                                            <td colspan="1">
+                                            </td>
+                                        </tr>
+                                        <tr style="width:100%">
+                                            <td class="slds-text-align_center">Employee + Family</td>
+                                            <td class="slds-text-align_center" colspan="1">
+                                                <lightning:input type="number" formatter="currency" label="" value="{!v.QuoteLine.RateFamily}" disabled="true"/>
                                             </td>
                                             <td colspan="1">
                                             </td>

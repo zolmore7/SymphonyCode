@@ -5,15 +5,18 @@
         <members>AnthemAPI</members>
         <members>SymphonyCallBrokerPortal</members>
         <members>SymphonyTimeStatus</members>
+        <members>SymphonyCaseUtil</members>
+        <members>alternateEndingModifyPlan</members>
+        <members>SymphonyAddSpecialityPlans</members>
+        <members>SymphonyCostShareGetQuoteLineItems</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>costShareDisplayPlans</members>
-        <members>symphonyDisplayPlans</members>
-        <members>symphonyMovePath</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
+        <members>alternateEndingModifyPlan</members>
         <name>AuraDefinitionBundle</name>
     </types>
 </Package>

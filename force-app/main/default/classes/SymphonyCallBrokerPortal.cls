@@ -8,7 +8,7 @@ public with sharing class SymphonyCallBrokerPortal {
 
         List<String> theFields = payload[0].split('\\|');
         
-        String thePayload = '{"eventName": "' + theFields[0] + '","eventData": {"caseStage": "' + theFields[1] + '",	"completedDate": "' + DateTime.now()  + '"},"eventCorrelation": {	"correlationId": "0011900000ktVJhAAM",	"ein": "9999999",	"vendorAppId": "' + theFields[2] + '",	"vendorTransId": "3062c8f45hgdfghfdgh811f0e91027643e0"}}';
+        String thePayload = '{"eventName": "' + theFields[0] + '","eventData": {"caseStage": "' + theFields[1] + '",	"completedDate": "' + DateTime.now()  + '"},"eventCorrelation": {	"correlationId": "' + theFields[3] + '",	"ein": "9999999",	"vendorAppId": "' + theFields[2] + '",	"vendorTransId": "3062c8f45hgdfghfdgh811f0e91027643e0"}}';
         
         LGJira2TokenDetail tokenDetail = new LGJiraUtility().AccessToken();
 

@@ -30,11 +30,12 @@ global with sharing class SymphonyTimeStatus {
 
     @AuraEnabled
     public static void callBrokerPortal(Id theId) {
-        Sym_Case__c theCase = [SELECT Sym_Quote__r.Id, Id, Sym_Case_Status__c FROM Sym_Case__c WHERE Id = :theId];
+        Sym_Case__c theCase = [SELECT Sym_Quote__r.Opportunity.Account.Id, Sym_Quote__r.Id, Id, Sym_Case_Status__c FROM Sym_Case__c WHERE Id = :theId];
         List<String> messageToPass = new List<String>();
         String theMessage = 'LG_CUSTOMER_SETUP|';
         theMessage += theCase.Sym_Case_Status__c + '|';
-        theMessage += theCase.Sym_Quote__r.Id;
+        theMessage += theCase.Sym_Quote__r.Id + '|';
+        theMessage += theCase.Sym_Quote__r.Opportunity.Account.Id;
         
         messageToPass.add(theMessage);
         SymphonyCallBrokerPortal.sendMessageToPortal(messageToPass);        

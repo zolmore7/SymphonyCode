@@ -115,12 +115,14 @@
     },
     
     saveQuoteLineItemDental : function(component,event,InNetworkCoinsurance,InNetworkBenefitPlanMaxLimit,OrthodonticCoverage) {
+        console.log('component.get("v.QuoteLine")::'+JSON.stringify(component.get("v.QuoteLine")));
         var action = component.get("c.SaveQuoteLinesDental");
         action.setParams({
             "QuoteLineId": component.get("v.currentQuoteLineId"),
             "InNetworkCoinsurance": InNetworkCoinsurance,
             "InNetworkBenefitPlanMaxLimit": InNetworkBenefitPlanMaxLimit,
             "OrthodonticCoverage": OrthodonticCoverage,
+            "QL":JSON.stringify(component.get("v.QuoteLine")),
             "UnitPrice": component.get("v.currentPrice")
         });
         action.setCallback(this, function(response) {
@@ -259,6 +261,10 @@
                 console.log(response.getReturnValue());
                 var allValues = JSON.parse(response.getReturnValue());
                 component.set("v.currentPrice",allValues.Single);
+                component.set("v.QuoteLine.RateSingleNumber",allValues.Single);
+                component.set("v.QuoteLine.RateChildren",allValues.Children);
+                component.set("v.QuoteLine.RateFamily",allValues.Family);
+                component.set("v.QuoteLine.RateTwoParty",allValues.TwoParty);
                 this.hideSpinner(component);
             }else if (response.getState() === "ERROR") {
                 var errors = action.getError();

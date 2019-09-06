@@ -398,7 +398,7 @@ global class AnthemAPI {
     public class DentalCostShare {
         
 		public String diagnosticAndPreventive {get; set;}
-        public Decimal innAnnualMax {get; set;}
+        public String innAnnualMax {get; set;}
         public String orthodonticCoverage {get; set;}
 
     }

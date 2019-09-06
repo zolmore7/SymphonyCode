@@ -5,6 +5,11 @@
     min-height: 75px;
 }
 
+.dentalHeader {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .rating {
     text-align: center;
     padding: 10px 0px;
@@ -47,4 +52,8 @@ span {
 
 .left {
     float: left;
+}
+
+.bold {
+    font-weight: bold;
 }

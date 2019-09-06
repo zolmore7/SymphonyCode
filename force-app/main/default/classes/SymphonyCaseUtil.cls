@@ -275,6 +275,17 @@ public with sharing class SymphonyCaseUtil {
 		symCase.Sym_Quote__c = quoteId;
         
         insert symCase;
+
+        //Better spot to be found for this but ok for now
+        sendCustomerMaster(quoteId);
     }
-    
+
+    @future(callout=true)
+    public static void sendCustomerMaster(Id quoteId) {
+        String payload = [SELECT Body FROM StaticResource WHERE Name = 'Customer_Master_Payload'].Body.toString();
+        payload = payload.replace('"0011900000ktHtKAAU"', '"' + quoteId + '"');
+        payload = payload.replace('"1212"', '"' + quoteId + '"');
+        AnthemAPI.sendCustomerMaster(payload);
+    }
+
 }
